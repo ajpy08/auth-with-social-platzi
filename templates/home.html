@@ -1,0 +1,124 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Social Authentication</title>
+
+    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="header clearfix">
+            <h1 style="font-size: 23px;">Social Authentication</h1>
+        </div>
+        <div class="jumbotron">
+            {% if user and not user.is_anonymous %}
+                <h3>Bienvenido {{ user.get_full_name }}!</h3>
+                <p>
+                    <a class="btn btn-lg btn-info" href="{% url 'user-logout' %}" role="button">
+                        Log out here
+                    </a>
+                </p>
+            {% else %}
+                <p>
+                    Social Authentication is a sample project of how to authenticate
+                    your users using Facebook, Twittwe, Github, etc. This project uses
+                    python-social-auth library and Django.
+                </p>
+            {% endif %}
+            <p>
+                <a href="https://github.com/ajpy08" target="_blank">
+                    Check out the source!
+                </a>
+            </p>
+        </div>
+        <section class="row">
+            <article class="col">
+                <h4>Facebook</h4>
+                <p>
+                    <a class="btn btn-lg btn-info" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+                        Enter with Facebook
+                    </a>
+                </p>                
+                <p>
+                    <pre>AUTHENTICATION_BACKENDS = (
+    # Facebook
+    'social.backends.facebook.FacebookOAuth2',
+)
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = ''
+SOCIAL_AUTH_FACEBOOK_SECRET = ''</pre>
+                </p>
+            </article>
+            <br>
+             <article class="col">
+                <h4>Twitter</h4>
+                <p>
+                    <a class="btn btn-lg btn-info" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
+                        Enter with Twitter
+                    </a>
+                </p>
+                <p>
+                    <pre>AUTHENTICATION_BACKENDS = (
+    # Twitter
+    'social.backends.twitter.TwitterOAuth',
+)
+
+SOCIAL_AUTH_TWITTER_KEY = ''
+SOCIAL_AUTH_TWITTER_SECRET = ''</pre>
+                </p>
+            </article>
+            <br>
+            <article class="col">
+                <h4>Github</h4>
+                <p>
+                    <a class="btn btn-lg btn-info" href="{% url 'social:begin' 'github' %}?next={{ request.path }}">
+                        Enter with GitHub
+                    </a>
+                </p>
+                <p>
+                    <pre>AUTHENTICATION_BACKENDS = (
+    # Github
+    'social.backends.github.GithubOAuth2',
+)
+
+SOCIAL_AUTH_GITHUB_KEY = ''
+SOCIAL_AUTH_GITHUB_SECRET = ''</pre>
+                </p>
+            </article>
+        </section>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="UTF-8" />
+ <title>Login Django Social Javi</title>
+
+ <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css" />
+ <link rel="stylesheet" href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" />
+</head>
+<body>
+    <div class="header clearfix">
+        <h1 style="font-size: 23px;">Autentificación por Redes Sociales</h1>
+    </div>
+ {% if user and not user.is_anonymous %}
+
+ <h1 style="font-size: 23px;">Welcome back {{ user.get_full_name }}.</h1> 
+
+ <a class="btn btn-lg btn-success" href="{% url 'user-logout' %}"> Logout </a>
+ {% else %}
+ <a class="btn btn-lg btn-primary" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> Enter with Facebook</a>
+ <a class="btn btn-lg btn-info" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> Enter with Twitter</a>
+ <a class="btn btn-lg btn-default" href="{% url 'social:begin' 'github' %}?next={{ request.path }}"> Enter with Github</a>
+ {% endif %}
+
+</body>
+</html>
